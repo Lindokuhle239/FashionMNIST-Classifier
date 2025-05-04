@@ -121,6 +121,26 @@ def classify_image(model, image_path):
         _, predicted = torch.max(output, 1) #get predicted class
         
     return class_names[predicted.item()] #return class name
+
+if __name__ == "__main__":
+    print("Trainig Model...🔃")
+    model = train_model()
+    
+    #evaluate model on test set
+    test_data = datasets.FashionMNIST(root='.', train=False, download=False, transform=transform)
+    test_loader = DataLoader(test_data, batch_size=64, shuffle=64, shuffle=False)
+    
+    correct = 0
+    total = 0
+    with torch.no_grad(): #disable gradients for evaluation
+        for images, labels in test_loader:
+            outputs = model(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+            
+    print(f"\nTest Accuracy: {100 * correct / total:.2f}%")
+        
     
     
 
