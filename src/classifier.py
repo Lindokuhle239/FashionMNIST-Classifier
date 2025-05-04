@@ -47,3 +47,9 @@ def train_model():
         transform=transform #apply defined transforms
     )
     
+    test_data = datasets.FashionMNIST(
+        root='.',
+        train=False, #load test set
+        download=False,
+        transform=transform
+    )
