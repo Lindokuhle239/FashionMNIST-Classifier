@@ -23,3 +23,12 @@ class FashionClassifier(nn.Module):
         self.fc1 = nn.Linear(28*28, 512) #first fully connected layer
         self.fc2 = nn.Linear(512, 10) #output layer - 10 classes
         self.dropout = nn.Dropout(p=0.25) #dropout for regularization
+        
+    def forward(self, x):
+        """Forward pass through the network"""
+        #flatten the input image
+        x = x.view(-1, 28*28)
+        
+        #applu ReLU activation and dropout
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
