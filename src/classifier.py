@@ -94,3 +94,12 @@ def train_model():
     torch.save(model.state_dict(), 'fashion_classifier.pth')
     return model
 
+def classify_image(model, image_path):
+    """Classify a single image using the trained model"""
+    #error handling for image loading
+    try:
+        img = torchvision.io.read_image(image_path, model=torchvision.io.ImageReadMode.GRAY)
+    except:
+        print(f"Error: Could not read image at {image_path}")
+        return None
+
