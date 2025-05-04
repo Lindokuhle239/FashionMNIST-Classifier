@@ -140,6 +140,21 @@ if __name__ == "__main__":
             correct += (predicted == labels).sum().item()
             
     print(f"\nTest Accuracy: {100 * correct / total:.2f}%")
+    
+    #interactive classification loop
+    print("\n====================================================================")
+    print("\nReady for classification‼️")
+    while True:
+        path = input("Please enter a filepath (or 'exit' to quit): ").strip()
+        if path.lower() == 'exit':
+            break
+        if not pathlib.Path(path).exists():
+            print("File not found!!🥲")
+            continue
+        prediction = classify_image(model, path)
+        print(f"Classifier: {prediction}")
+        
+    print("Exiting...👋")
         
     
     
