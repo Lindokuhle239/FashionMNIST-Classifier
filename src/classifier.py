@@ -14,3 +14,12 @@ transform = transforms.Compose([
     transforms.ToTensor(), #converts PIL image to tensor
     transforms.Normalize((0.5), (0.5)) #normalize to [-1,1] range
 ])
+
+class FashionClassifier(nn.Module):
+    """Neural Network for FashionMNIST classification"""
+    def __init__(self):
+        super().__init__()
+        #defining network layers
+        self.fc1 = nn.Linear(28*28, 512) #first fully connected layer
+        self.fc2 = nn.Linear(512, 10) #output layer - 10 classes
+        self.dropout = nn.Dropout(p=0.25) #dropout for regularization
