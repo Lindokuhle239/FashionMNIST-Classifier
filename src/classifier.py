@@ -102,4 +102,17 @@ def classify_image(model, image_path):
     except:
         print(f"Error: Could not read image at {image_path}")
         return None
+    
+    #read and process the image
+    img = torchvision.io.read_image(image_path, mode=torchvision.io.ImageReadMode.GRAY)
+    img = img.float() / 255.0 #normalize to [0,1] range
+    
+    #apply same transforms as training data
+    transform = transforms.Compose([
+        transforms.Resize((28,28)), #ensure correct size
+        transforms.Normalize((0.5), (0.5))
+    ])
+    img = transform(img)
+    
+    
 
