@@ -36,3 +36,14 @@ class FashionClassifier(nn.Module):
         #output layer with log-softmax activation
         x = self.fc2(x)
         return torch.log_softmax(x, dim=1) #log probabilities for NLLLoss
+    
+def train_model():
+    """Train the FashionClassifier model"""
+    #load training and test datasets
+    train_data = datasets.FashionMNIST(
+        root='.', #data root directory
+        train=True, #load trainig set
+        download=False, #using local files
+        transform=transform #apply defined transforms
+    )
+    
