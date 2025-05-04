@@ -114,5 +114,13 @@ def classify_image(model, image_path):
     ])
     img = transform(img)
     
+    #add batch dimension and predict
+    with torch.no_grad(): #disable gradient calc
+        img = img.unsqueeze(0) #add batch dimension (1,1,28,28)
+        output = model(img)
+        _, predicted = torch.max(output, 1) #get predicted class
+        
+    return class_names[predicted.item()] #return class name
+    
     
 
