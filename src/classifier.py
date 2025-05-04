@@ -62,4 +62,11 @@ def train_model():
     model = FashionClassifier()
     criterion = nn.NLLLoss() #negative log likelihood loss
     optimizer = optim.Adam(model.parameters(), lr=0.001) #Adam optimizer
+    
+    #training loop
+    epochs = 15
+    for epoch in range(epochs):
+        running_loss = 0.0 #track loss per epoch
+        
+        
 
