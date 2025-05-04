@@ -57,4 +57,9 @@ def train_model():
     #data loaders for batch processing
     train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
     test_loader = DataLoader(test_data, batch_size=64, shuffle=False)
+    
+    #initialize model, loss function, and optimizer
+    model = FashionClassifier()
+    criterion = nn.NLLLoss() #negative log likelihood loss
+    optimizer = optim.Adam(model.parameters(), lr=0.001) #Adam optimizer
 
