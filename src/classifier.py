@@ -32,3 +32,7 @@ class FashionClassifier(nn.Module):
         #applu ReLU activation and dropout
         x = torch.relu(self.fc1(x))
         x = self.dropout(x)
+        
+        #output layer with log-softmax activation
+        x = self.fc2(x)
+        return torch.log_softmax(x, dim=1) #log probabilities for NLLLoss
