@@ -128,7 +128,7 @@ if __name__ == "__main__":
     
     #evaluate model on test set
     test_data = datasets.FashionMNIST(root='.', train=False, download=False, transform=transform)
-    test_loader = DataLoader(test_data, batch_size=64, shuffle=64, shuffle=False)
+    test_loader = DataLoader(test_data, batch_size=64, shuffle=False)
     
     correct = 0
     total = 0
