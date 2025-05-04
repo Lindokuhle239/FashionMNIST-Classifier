@@ -68,5 +68,29 @@ def train_model():
     for epoch in range(epochs):
         running_loss = 0.0 #track loss per epoch
         
+        #batch training
+        for images, labels in train_loader:
+            #zero parameter gradients
+            optimizer.zero_grad()
+            
+            #forwar pass
+            output = model(images)
+            
+            #calc loss
+            loss = criterion(output, labels)
+            
+            #backward pass and optimizer
+            loss.backward()
+            optimizer.step()
+            
+            #accumulate loss
+            running_loss += loss.item()
+            
+        #print epoch stats
+        avg_loss = running_loss/len(train_loader)
+        print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f}")
         
+    #save training model weights
+    torch.save(model.state_dict(), 'fashion_classifier.pth')
+    return model
 
