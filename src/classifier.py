@@ -6,6 +6,8 @@ from torchvision import datasets, transforms, io
 import pathlib
 import torchvision
 
+import time
+
 #defining class names corresponding to the FashionMNIST labels
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
@@ -63,8 +65,11 @@ def train_model():
     criterion = nn.NLLLoss() #negative log likelihood loss
     optimizer = optim.Adam(model.parameters(), lr=0.001) #Adam optimizer
     
+    #start timer
+    start_time = time.time()    
+    
     #training loop
-    epochs = 5
+    epochs = 15
     for epoch in range(epochs):
         running_loss = 0.0 #track loss per epoch
         
@@ -89,6 +94,14 @@ def train_model():
         #print epoch stats
         avg_loss = running_loss/len(train_loader)
         print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f}")
+        
+    #find duration of training
+    end_time = time.time()
+    training_seconds = end_time - start_time
+    minutes = int(training_seconds // 60)
+    seconds = int(training_seconds % 60)
+    
+    print(f"\nTraining completed in: {minutes} minutes {seconds} seconds")
         
     #save training model weights
     torch.save(model.state_dict(), 'fashion_classifier.pth')
