@@ -1,0 +1,58 @@
+# FashionMNIST Classifier - CSC3022F ML-Assignment 1
+
+## Project Overview
+This repository contains an Artificial Neural Network (ANN) implementation for classifying FashionMNIST images into 10 fashion categories. The system includes model training, evaluation, and interactive image classification capabilities.
+
+## File Structure
+
+|---fashion-jpegs/
+|---FashionMNIST/
+|---src/
+    |---classifier.py
+    |---data_loading.py
+|---.gitignore
+|---log.txt
+|---ReadME
+
+## File Description
+
+### 1. classifier.py
+***Purpose**: Main executable script for the entire project
+***Functionality***:
+- Defines the neural network architecture
+- contains the training loop with Adam optimizer
+- Implements test set evaluation
+- Provides user interactive image classification via command line
+- Measures precise training times
+
+**Usage**:
+python3 src/classifier.py
+
+2. data_loading.py
+***Purpose***: Handles data related operations
+***Functionality***:
+- Loads FashionMNIST dataset
+- Applies transformations (normalization, ToTensor)
+- creates DataLoader instances for batch processing
+
+3. fashion_classifier.pth
+***Purpose***: Serialized model weights
+***Generated When***:
+- Automatically created after successful training
+- Contains the state dict of the best performing model
+
+4. log.txt
+***Purpose***: Training process documentation
+***Contains***: 
+- Epoch loss values
+- Final test accuracy
+- Traing time
+
+## Usage Example
+
+1. Train Model:
+python3 src/classifier.py
+
+2. Classify an image:
+> Please enter a filepath (or 'exit' to quit): fasion-jpegs/bag.jpg
+Classifier: Bag
