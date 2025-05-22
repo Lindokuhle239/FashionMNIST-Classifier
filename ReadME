@@ -1,4 +1,4 @@
-# FashionMNIST Classifier - CSC3022F ML-Assignment 1
+# FashionMNIST Classifier
 
 ## Project Overview
 This repository contains an Artificial Neural Network (ANN) implementation for classifying FashionMNIST images into 10 fashion categories. The system includes model training, evaluation, and interactive image classification capabilities.
