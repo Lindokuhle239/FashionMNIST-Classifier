@@ -4,14 +4,21 @@
 This repository contains an Artificial Neural Network (ANN) implementation for classifying FashionMNIST images into 10 fashion categories. The system includes model training, evaluation, and interactive image classification capabilities.
 
 ## File Structure
-.
+
 ├── fashion-jpegs/ # Sample test images
+
 ├── FashionMNIST/ # Dataset directory
+
 ├── src/
+
 │ ├── classifier.py # Main training and classification script
+
 │ └── data_loading.py # Data loading and preprocessing
+
 ├── .gitignore
+
 ├── log.txt # Training process log
+
 └── README.md # This documentation
 
 
@@ -60,11 +67,9 @@ python3 src/classifier.py
 
 ### Usage Example
 ** 1.Train the model**:
-```bash
 python3 src/classifier.py
 
 ** 2. Classify images interactively***:
-```bash
 > Please enter a filepath: fashion-jpegs/bag.jpg
 Classifier: Bag
 
